@@ -1,1 +1,76 @@
-
+{
+	"info": {
+		"_postman_id": "b3c9e32b-f093-4e9f-ae5b-4c6db507fb2f",
+		"name": "Postman API Assessment",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "47344144",
+		"_collection_link": "https://aynaz67-3191509.postman.co/workspace/Aynaz-Ghofrani's-Workspace~59e79cce-61c6-4455-8464-f9df348607b9/collection/47344144-b3c9e32b-f093-4e9f-ae5b-4c6db507fb2f?action=share&source=collection_link&creator=47344144"
+	},
+	"item": [
+		{
+			"name": "https://jsonplaceholder.typicode.com/posts",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"\r",
+							"var jsonData = pm.response.json();\r",
+							" let requestData = JSON.parse(pm.request.body.raw);\r",
+							"\r",
+							"\r",
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response has an id\", function () {\r",
+							"    pm.expect(jsonData).to.have.property(\"id\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Title matches request\", function () {\r",
+							"    pm.expect(jsonData.title).to.eql(requestData.title);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body matches request\", function () {\r",
+							"    pm.expect(jsonData.body).to.eql(requestData.body);\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"My Test Post\",\r\n    \"body\": \"This is a sample post body.\",\r\n    \"userId\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://jsonplaceholder.typicode.com/posts",
+					"protocol": "https",
+					"host": [
+						"jsonplaceholder",
+						"typicode",
+						"com"
+					],
+					"path": [
+						"posts"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

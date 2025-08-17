@@ -108,7 +108,7 @@ Task: Implement function to check string Has Only Unique Characters.
 
 Constraints: no additional data structures, optimised for performance.
 
-time complexity: O(n²) 
+time complexity: O(n logn)
 
 IDE: Visual Studio, Solution: TestProject  
 

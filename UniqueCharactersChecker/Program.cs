@@ -6,22 +6,20 @@ class Program
     {
         Console.WriteLine(HasOnlyUniqueCharacters("hello")); 
         Console.WriteLine(HasOnlyUniqueCharacters("world")); 
-        Console.WriteLine(HasOnlyUniqueCharacters("Adam"));  
+        Console.WriteLine(HasOnlyUniqueCharacters("Adam"));
     }
 
     static bool HasOnlyUniqueCharacters(string input)
     {
         input = input.ToLower();
+        char[] chars = input.ToCharArray();
+        Array.Sort(chars);
 
-        for (int i = 0; i < input.Length; i++)
+        for (int i = 1; i < chars.Length; i++)
         {
-            for (int j = i + 1; j < input.Length; j++)
-            {
-                if (input[i] == input[j])
-                    return false;
-            }
+            if (chars[i] == chars[i - 1])
+                return false;
         }
-
         return true;
     }
 }
